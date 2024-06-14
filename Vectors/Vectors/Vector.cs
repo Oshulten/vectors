@@ -10,8 +10,8 @@ namespace Vectors
         public double Sum { get; set; }
         public double Product { get; set; }
         public double Magnitude { get; set; }
-
     }
+    
     public class Vector : List<double>, IVector
     {
         private static readonly double EqualityPrecision = 3;
