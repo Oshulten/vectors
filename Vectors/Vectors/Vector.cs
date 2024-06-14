@@ -9,9 +9,22 @@ namespace Vectors
     {
         public Vector() : base() { }
         public Vector(double[] values) : base(values) { }
+        public Vector(int capacity) : base(capacity) { }
         public new int Count { get => base.Count; set => this.AdjustCount(value); }
 
-        public override string ToString() {
+        public static Vector Addition(List<Vector> vectors) {
+            var matchedVectors = Vector.MatchVectors(vectors);
+            var dimension = matchedVectors[0].Count;
+            var sumVector = new Vector(dimension);
+            for (int i = 0; i < dimension; i++) {
+                double sum = 0;
+                foreach(var vector in matchedVectors) sum += vector[i];
+                sumVector.Add(sum);
+            }
+            return sumVector;
+        }
+        public override string ToString()
+        {
             return $"[{String.Join<double>(", ", this)}]";
         }
 
@@ -26,6 +39,15 @@ namespace Vectors
                 this.RemoveRange(newCount, this.Count - newCount);
             }
             if (this.Count < newCount) while (this.Count < newCount) this.Add(0d);
+        }
+        public static List<Vector> MatchVectors(List<Vector> vectors)
+        {
+            var vectorsCopy = new List<Vector>(vectors);
+            int maxCount =
+                (from vector in vectorsCopy
+                 select vector.Count).Max();
+            vectorsCopy.ForEach((vector) => vector.Count = maxCount);
+            return vectorsCopy;
         }
     }
 }

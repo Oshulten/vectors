@@ -34,11 +34,12 @@ namespace Vectors
         }
         public static void ConstrainGuard(double? min, double? max, ConstraintType lowerConstraint = ConstraintType.Unconstrained, ConstraintType higherConstraint = ConstraintType.Unconstrained)
         {
+            if ((min is null || max is null) && (lowerConstraint == ConstraintType.Cycle || higherConstraint == ConstraintType.Cycle)) {
+                throw new ArgumentException("Cycle constraint cannot be used in combination with null min or max argument");
+            }
             if (min is null && max is null) throw new ArgumentException("Both min and max cannot be null");
             if (max is null && higherConstraint == ConstraintType.Cap) throw new ArgumentException("Use of higher ConstraintType.Cap cannot be combined with a null value of max");
-            if (max is not null && min is null && higherConstraint == ConstraintType.Cycle) throw new ArgumentException("Use of higher ConstraintType.Cycle cannot be combined with a null value of min");
             if (min is null && lowerConstraint == ConstraintType.Cap) throw new ArgumentException("Use of lower ConstraintType.Cap cannot be combined with a null value of min");
-            if (min is not null && max is null && lowerConstraint == ConstraintType.Cycle) throw new ArgumentException("Use of lower ConstraintType.Cycle cannot be combined with a null value of max");
         }
         public static double Constrain(double value, double? min, double? max, ConstraintType lowerConstraint = ConstraintType.Unconstrained, ConstraintType higherConstraint = ConstraintType.Unconstrained)
         {
