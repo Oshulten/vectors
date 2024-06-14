@@ -193,5 +193,23 @@ namespace vectors.Tests
             vector.Magnitude = magnitude;
             Assert.True(vector == expectedVector);
         }
+
+        [Theory]
+        [InlineData(new double[] {1, 2, 3}, 2d, new double[] {2, 4, 6})]
+        public void DoubleMultiplication(double[] array, double factor, double[] expectedArray) {
+            var vector = VectorShould.ArrayToVector(array);
+            var expectedVector = VectorShould.ArrayToVector(expectedArray);
+            var product = Vector.Multiplication(vector, factor);
+            Assert.True(product == expectedVector);
+        }
+
+        [Theory]
+        [InlineData(new double[] {1, 2, 3}, new double[] {-1, -2, -3})]
+        public void Negation(double[] array, double[] expectedArray) {
+            var vector = VectorShould.ArrayToVector(array);
+            var expectedVector = VectorShould.ArrayToVector(expectedArray);
+            var negation = -vector;
+            Assert.True(-vector == expectedVector);
+        }
     }
 }

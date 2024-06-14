@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "52FC7WU2Cw/qxd6SiV3T/cCOsrmBknsADRiUMnBu2i4U35x5WQPfNrOMeP//Y1z3Wahuv0neh03XhI7sG67ROg==",
+  "dgSpecHash": "gKcfAXcRCREEerDVV2E/FaIbKmkaOsN+SufUGH9mPKBjdEmNZAvCTSK8Ub4zgx5V7fj52h0EQLHhxb4wfiwnWQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console-parallel\\vectors\\vectors.Tests\\vectors.Tests.csproj",
+  "projectFilePath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console\\vectors.Tests\\vectors.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oshul\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\oshul\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

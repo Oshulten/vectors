@@ -15,8 +15,11 @@ namespace Vectors
 
         public static Vector operator +(Vector v1, Vector v2) => Vector.Addition([v1, v2]);
         public static Vector operator *(Vector v1, Vector v2) => Vector.Multiplication([v1, v2]);
+        public static Vector operator *(Vector v1, double f) => Vector.Multiplication([v1, new Vector([f])]);
+        public static Vector operator *(double f, Vector v1) => Vector.Multiplication([v1, new Vector([f])]);
         public static bool operator ==(Vector v1, Vector v2) => v1.Equals(v2);
         public static bool operator !=(Vector v1, Vector v2) => !v1.Equals(v2);
+        public static Vector operator -(Vector v1) => Vector.Multiplication(v1, -1d);
 
         public static Vector Addition(List<Vector> vectors)
         {
@@ -45,6 +48,14 @@ namespace Vectors
             }
             return productVector;
         }
+
+        public static Vector Multiplication(Vector vector, double f) {
+            var product = new Vector();
+            foreach(double value in vector) product.Add(value*f);
+            return product;
+        }
+
+        public static Vector Multiplication(double f, Vector vector) => Vector.Multiplication(vector, f);
 
         public double Magnitude
         {
