@@ -13,7 +13,7 @@ namespace Vectors
         public new int Count { get => base.Count; set => this.AdjustCount(value); }
 
         public static Vector operator +(Vector v1, Vector v2) => Vector.Addition([v1, v2]);
-        // public static Vector operator *(Vector v1, Vector v2) => Vector.Multiplication([v1, v2]);
+        public static Vector operator *(Vector v1, Vector v2) => Vector.Multiplication([v1, v2]);
 
         public static Vector Addition(List<Vector> vectors)
         {

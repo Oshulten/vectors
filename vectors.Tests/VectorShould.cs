@@ -109,13 +109,13 @@ namespace vectors.Tests
             Assert.Equal(expectedProduct, Vector.Multiplication(factors));
         }
 
-        // [Theory]
-        // [MemberData(nameof(MultiplicationData))]
-        // public void MultiplyVectorsWithOperator(List<Vector> factors, Vector expectedProduct)
-        // {
-        //     var product = new Vector([1]);
-        //     foreach(var factor in factors) product *= factor;
-        //     Assert.Equal(expectedProduct, product);
-        // }
+        [Theory]
+        [MemberData(nameof(MultiplicationData))]
+        public void MultiplyVectorsWithOperator(List<Vector> factors, Vector expectedProduct)
+        {
+            var product = new Vector([1]);
+            foreach(var factor in factors) product *= factor;
+            Assert.Equal(expectedProduct, product);
+        }
     }
 }
