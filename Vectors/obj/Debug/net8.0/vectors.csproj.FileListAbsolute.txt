@@ -12,3 +12,4 @@ C:\Users\oshul\Desktop\Code Projects\vector-console\Vectors\obj\Debug\net8.0\ref
 C:\Users\oshul\Desktop\Code Projects\vector-console\Vectors\obj\Debug\net8.0\vectors.pdb
 C:\Users\oshul\Desktop\Code Projects\vector-console\Vectors\obj\Debug\net8.0\vectors.genruntimeconfig.cache
 C:\Users\oshul\Desktop\Code Projects\vector-console\Vectors\obj\Debug\net8.0\ref\vectors.dll
+C:\Users\oshul\Desktop\Code Projects\vector-console\Vectors\obj\Debug\net8.0\vectors.sourcelink.json

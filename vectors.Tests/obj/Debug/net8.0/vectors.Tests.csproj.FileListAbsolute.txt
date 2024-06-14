@@ -103,3 +103,4 @@ C:\Users\oshul\Desktop\Code Projects\vector-console\vectors.Tests\obj\Debug\net8
 C:\Users\oshul\Desktop\Code Projects\vector-console\vectors.Tests\obj\Debug\net8.0\vectors.Tests.pdb
 C:\Users\oshul\Desktop\Code Projects\vector-console\vectors.Tests\obj\Debug\net8.0\vectors.Tests.genruntimeconfig.cache
 C:\Users\oshul\Desktop\Code Projects\vector-console\vectors.Tests\obj\Debug\net8.0\ref\vectors.Tests.dll
+C:\Users\oshul\Desktop\Code Projects\vector-console\vectors.Tests\obj\Debug\net8.0\vectors.Tests.sourcelink.json
