@@ -17,7 +17,7 @@ namespace Vectors
 
         public static Vector Addition(List<Vector> vectors)
         {
-            var matchedVectors = Vector.MatchVectors(vectors);
+            var matchedVectors = Vector.MatchVectors(vectors, 0d);
             var dimension = matchedVectors[0].Count;
             var sumVector = new Vector(dimension);
             for (int i = 0; i < dimension; i++)
@@ -31,7 +31,7 @@ namespace Vectors
 
         public static Vector Multiplication(List<Vector> vectors)
         {
-            var matchedVectors = Vector.MatchVectors(vectors);
+            var matchedVectors = Vector.MatchVectors(vectors, 1d);
             var dimension = matchedVectors[0].Count;
             var productVector = new Vector(dimension);
             for (int i = 0; i < dimension; i++)
@@ -47,7 +47,7 @@ namespace Vectors
             return $"[{String.Join<double>(", ", this)}]";
         }
 
-        private void AdjustCount(int newCount)
+        private void AdjustCount(int newCount, double fillValue = 0d)
         {
             if (newCount < 0)
             {
@@ -57,15 +57,15 @@ namespace Vectors
             {
                 this.RemoveRange(newCount, this.Count - newCount);
             }
-            if (this.Count < newCount) while (this.Count < newCount) this.Add(0d);
+            if (this.Count < newCount) while (this.Count < newCount) this.Add(fillValue);
         }
-        public static List<Vector> MatchVectors(List<Vector> vectors)
+        public static List<Vector> MatchVectors(List<Vector> vectors, double fillValue = 0d)
         {
             var vectorsCopy = new List<Vector>(vectors);
             int maxCount =
                 (from vector in vectorsCopy
                  select vector.Count).Max();
-            vectorsCopy.ForEach((vector) => vector.Count = maxCount);
+            vectorsCopy.ForEach((vector) => vector.AdjustCount(maxCount, fillValue));
             return vectorsCopy;
         }
     }

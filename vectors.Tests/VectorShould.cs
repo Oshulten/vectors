@@ -38,11 +38,11 @@ namespace vectors.Tests
                 return (factorVectors, productVector);
             }
             var data = new List<object[]>();
-            var factorsProduct = FactorsProduct([[1, 2], [2]], [2, 0]);
+            var factorsProduct = FactorsProduct([[1, 2], [2]], [2, 2]);
             data.Add(new object[] { factorsProduct.Item1, factorsProduct.Item2 });
-            factorsProduct = FactorsProduct([[1, 2, 3], [2, -1, -1, -1]], [2, -2, -3, 0]);
+            factorsProduct = FactorsProduct([[1, 2, 3], [2, -1, -1, -1]], [2, -2, -3, -1]);
             data.Add(new object[] { factorsProduct.Item1, factorsProduct.Item2 });
-            factorsProduct = FactorsProduct([[1, 2, 3], [2, -1, -1, -1], [-1, -1]], [-2, 2, 0, 0]);
+            factorsProduct = FactorsProduct([[1, 2, 3], [2, -1, -1, -1], [-1, -1]], [-2, 2, -3, -1]);
             data.Add(new object[] { factorsProduct.Item1, factorsProduct.Item2 });
             return data;
         }
