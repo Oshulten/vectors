@@ -133,7 +133,7 @@ namespace vectors.Tests
         [InlineData(new double[] { 1, -1, 0 }, 0)]
         public void SumGetter(double[] array, double sum) {
             var vector = VectorShould.ArrayToVector(array);
-            Assert.Equal(sum, vector.Sum());
+            Assert.Equal(sum, vector.Sum);
         }
 
         [Theory]
@@ -155,5 +155,32 @@ namespace vectors.Tests
             var vector = VectorShould.ArrayToVector(array);
             Assert.Throws<Exception>(() => vector.Sum = sum);
         }
+
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3 }, 6)]
+        [InlineData(new double[] { 1, -1, 0 }, 0)]
+        public void ProductGetter(double[] array, double product) {
+            var vector = VectorShould.ArrayToVector(array);
+            Assert.Equal(product, vector.Product);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3 }, 12, new double[] { 1*1.25992104989, 2*1.25992104989, 3*1.25992104989 })]
+        [InlineData(new double[] { 1, -2, 1 }, 4, new double[] { 1*(-1.25992104989), -2*(-1.25992104989), 1*(-1.25992104989) })]
+        public void ProductSetter(double[] array, double product, double[] expectedArray) {
+            var vector = VectorShould.ArrayToVector(array);
+            var expectedVector = VectorShould.ArrayToVector(expectedArray);
+            
+            vector.Product = product;
+            Assert.True(vector.Equals(expectedVector));
+        }
+
+        // [Theory]
+        // [InlineData(new double[] { 1, 2, -3 }, 12)]
+        // [InlineData(new double[] { 1, -1, 0 }, 4)]
+        // public void SumSetterException(double[] array, double sum) {
+        //     var vector = VectorShould.ArrayToVector(array);
+        //     Assert.Throws<Exception>(() => vector.Sum = sum);
+        // }
     }
 }
