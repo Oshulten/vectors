@@ -42,6 +42,17 @@ namespace Vectors
             }
             return productVector;
         }
+
+        public double Sum
+        {
+            get => (from value in this select value).Sum();
+            set {
+                if (this.Sum == 0d && value != 0d) throw new Exception("A vector of sum 0 cannot be resummed");
+                double k = value / this.Sum;
+                for(int i = 0; i < this.Count; i++) this[i] *= k;
+            }
+        }
+
         public override string ToString()
         {
             return $"[{String.Join<double>(", ", this)}]";

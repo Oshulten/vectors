@@ -9,6 +9,16 @@ namespace vectors.Tests
 {
     public class VectorShould
     {
+        private static List<Vector> MatrixToVectors(double[][] matrix) {
+            var vectors = new List<Vector>();
+            foreach (var array in matrix) vectors.Add(new Vector(array));
+            return vectors;
+        }
+
+        private static Vector ArrayToVector(double[] array) {
+            return new Vector(array);
+        }
+
         public static IEnumerable<object[]> AdditionData()
         {
             (List<Vector>, Vector) TermSum(double[][] terms, double[] sum)
@@ -116,6 +126,34 @@ namespace vectors.Tests
             var product = new Vector([1]);
             foreach(var factor in factors) product *= factor;
             Assert.Equal(expectedProduct, product);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3 }, 6)]
+        [InlineData(new double[] { 1, -1, 0 }, 0)]
+        public void SumGetter(double[] array, double sum) {
+            var vector = VectorShould.ArrayToVector(array);
+            Assert.Equal(sum, vector.Sum());
+        }
+
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3 }, 12, new double[] { 2, 4, 6 })]
+        [InlineData(new double[] { 1, -2, 0 }, 4, new double[] { -4, 8, 0 })]
+        public void SumSetter(double[] array, double sum, double[] expectedArray) {
+            var vector = VectorShould.ArrayToVector(array);
+            var expectedVector = VectorShould.ArrayToVector(expectedArray);
+            
+            vector.Sum = sum;
+
+            Assert.Equal(expectedVector, vector);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 1, 2, -3 }, 12)]
+        [InlineData(new double[] { 1, -1, 0 }, 4)]
+        public void SumSetterException(double[] array, double sum) {
+            var vector = VectorShould.ArrayToVector(array);
+            Assert.Throws<Exception>(() => vector.Sum = sum);
         }
     }
 }
