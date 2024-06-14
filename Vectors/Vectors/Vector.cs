@@ -12,13 +12,19 @@ namespace Vectors
         public Vector(int capacity) : base(capacity) { }
         public new int Count { get => base.Count; set => this.AdjustCount(value); }
 
-        public static Vector Addition(List<Vector> vectors) {
+        public static Vector operator +(Vector v1, Vector v2) {
+            return Vector.Addition([v1, v2]);
+        }
+        
+        public static Vector Addition(List<Vector> vectors)
+        {
             var matchedVectors = Vector.MatchVectors(vectors);
             var dimension = matchedVectors[0].Count;
             var sumVector = new Vector(dimension);
-            for (int i = 0; i < dimension; i++) {
+            for (int i = 0; i < dimension; i++)
+            {
                 double sum = 0;
-                foreach(var vector in matchedVectors) sum += vector[i];
+                foreach (var vector in matchedVectors) sum += vector[i];
                 sumVector.Add(sum);
             }
             return sumVector;

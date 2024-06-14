@@ -23,6 +23,8 @@ namespace vectors.Tests
             data.Add(new object[] { termSum.Item1, termSum.Item2 });
             termSum = TermSum([[1, 2, 3], [2, -1, -1, -1]], [3, 1, 2, -1]);
             data.Add(new object[] { termSum.Item1, termSum.Item2 });
+            termSum = TermSum([[1, 2, 3], [2, -1, -1, -1], [-1, -1]], [2, 0, 2, -1]);
+            data.Add(new object[] { termSum.Item1, termSum.Item2 });
             return data;
         }
 
@@ -70,6 +72,15 @@ namespace vectors.Tests
         public void AddVectors(List<Vector> terms, Vector expectedSum)
         {
             Assert.Equal(Vector.Addition(terms), expectedSum);
+        }
+
+        [Theory]
+        [MemberData(nameof(AdditionData))]
+        public void AddVectorsWithOperator(List<Vector> terms, Vector expectedSum)
+        {
+            var sum = new Vector();
+            foreach(var term in terms) sum += term;
+            Assert.Equal(sum, expectedSum);
         }
     }
 }
