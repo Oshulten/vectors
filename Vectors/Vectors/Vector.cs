@@ -5,7 +5,14 @@ using System.Threading.Tasks;
 
 namespace Vectors
 {
-    public class Vector : List<double>, IEquatable<Vector>
+    public interface IVector : IEquatable<IVector> {
+        public int Count { get; set;}
+        public double Sum { get; set; }
+        public double Product { get; set; }
+        public double Magnitude { get; set; }
+
+    }
+    public class Vector : List<double>, IVector
     {
         private static readonly double EqualityPrecision = 3;
         public Vector() : base() { }
@@ -157,6 +164,11 @@ namespace Vectors
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public bool Equals(IVector? other)
+        {
+            return this == (Vector)other!;
         }
     }
 }
