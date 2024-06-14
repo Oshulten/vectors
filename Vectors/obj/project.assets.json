@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console\\Vectors\\vectors.csproj",
+      "projectUniqueName": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console-parallel\\vectors\\Vectors\\vectors.csproj",
       "projectName": "vectors",
-      "projectPath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console\\Vectors\\vectors.csproj",
+      "projectPath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console-parallel\\vectors\\Vectors\\vectors.csproj",
       "packagesPath": "C:\\Users\\oshul\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console\\Vectors\\obj\\",
+      "outputPath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console-parallel\\vectors\\Vectors\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\oshul\\AppData\\Roaming\\NuGet\\NuGet.Config",

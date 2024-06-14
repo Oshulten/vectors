@@ -7,7 +7,7 @@ namespace Vectors
 {
     public class Vector : List<double>, IEquatable<Vector>
     {
-        private static double EqualityPrecision = 3;
+        private static readonly double EqualityPrecision = 3;
         public Vector() : base() { }
         public Vector(double[] values) : base(values) { }
         public Vector(int capacity) : base(capacity) { }
@@ -46,6 +46,17 @@ namespace Vectors
             return productVector;
         }
 
+        public double Magnitude
+        {
+            get => Math.Pow(this.SumSquared, 0.5);
+            set {
+                if (this.Magnitude == 0d && value != 0d) throw new Exception("A vector of magnitude 0 cannot be refactored");
+                if (value == 0d) for (int i = 0; i < this.Count; i++) this[i] = 0;
+                double k = value / this.Magnitude;
+                for (int i = 0; i < this.Count; i++) this[i] *= k;
+            }
+        }
+
         public double Product
         {
             get
@@ -70,6 +81,16 @@ namespace Vectors
                 if (this.Sum == 0d && value != 0d) throw new Exception("A vector of sum 0 cannot be resummed");
                 double k = value / this.Sum;
                 for (int i = 0; i < this.Count; i++) this[i] *= k;
+            }
+        }
+
+        private double SumSquared
+        {
+            get
+            {
+                double sum = 0;
+                foreach (double value in this) sum += value * value;
+                return sum;
             }
         }
 

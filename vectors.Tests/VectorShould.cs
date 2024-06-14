@@ -175,12 +175,23 @@ namespace vectors.Tests
             Assert.True(vector.Equals(expectedVector));
         }
 
-        // [Theory]
-        // [InlineData(new double[] { 1, 2, -3 }, 12)]
-        // [InlineData(new double[] { 1, -1, 0 }, 4)]
-        // public void SumSetterException(double[] array, double sum) {
-        //     var vector = VectorShould.ArrayToVector(array);
-        //     Assert.Throws<Exception>(() => vector.Sum = sum);
-        // }
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3 }, 3.74165738677)]
+        [InlineData(new double[] { 1, -1, 0 }, 1.41421356237)]
+        [InlineData(new double[] { 0, 0, 0 }, 0)]
+        public void MagnitudeGetter(double[] array, double magnitude) {
+            var vector = VectorShould.ArrayToVector(array);
+            Assert.Equal(magnitude, vector.Magnitude, 5);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 3, 4 }, 1, new double[] { 3*0.2, 4*0.2 })]
+        public void MagnitudeSetter(double[] array, double magnitude, double[] expectedArray) {
+            var vector = VectorShould.ArrayToVector(array);
+            var expectedVector = VectorShould.ArrayToVector(expectedArray);
+            
+            vector.Magnitude = magnitude;
+            Assert.True(vector == expectedVector);
+        }
     }
 }

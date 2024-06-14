@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Eri5CkthtUV+D6+sG0Vr9aWQFy85Ge6k+FjzldXNWeHoc07fTx42bID3Y3DgXy0gtq2zYzoRZrIo/kWFR3Za9A==",
+  "dgSpecHash": "bcSN4n5ah0ymHmOMXFkDsz/0XOaMWHfwJ2IJtfHtxlVXKNCZkx8v6vzvr2vlCyL//9gEr/+Gss5/f0ZPr7KG+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console\\Vectors\\vectors.csproj",
+  "projectFilePath": "C:\\Users\\oshul\\Desktop\\Code Projects\\vector-console-parallel\\vectors\\Vectors\\vectors.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
