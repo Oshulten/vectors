@@ -47,6 +47,7 @@ namespace Vectors
             return $"[{String.Join<double>(", ", this)}]";
         }
 
+        //A cheeky comment
         private void AdjustCount(int newCount, double fillValue = 0d)
         {
             if (newCount < 0)
