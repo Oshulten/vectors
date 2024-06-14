@@ -28,6 +28,25 @@ namespace vectors.Tests
             return data;
         }
 
+        public static IEnumerable<object[]> MultiplicationData()
+        {
+            (List<Vector>, Vector) FactorsProduct(double[][] factors, double[] product)
+            {
+                var factorVectors = new List<Vector>();
+                foreach (var t in factors) factorVectors.Add(new Vector(t));
+                var productVector = new Vector(product);
+                return (factorVectors, productVector);
+            }
+            var data = new List<object[]>();
+            var factorsProduct = FactorsProduct([[1, 2], [2]], [2, 0]);
+            data.Add(new object[] { factorsProduct.Item1, factorsProduct.Item2 });
+            factorsProduct = FactorsProduct([[1, 2, 3], [2, -1, -1, -1]], [2, -2, -3, 0]);
+            data.Add(new object[] { factorsProduct.Item1, factorsProduct.Item2 });
+            factorsProduct = FactorsProduct([[1, 2, 3], [2, -1, -1, -1], [-1, -1]], [-2, 2, 0, 0]);
+            data.Add(new object[] { factorsProduct.Item1, factorsProduct.Item2 });
+            return data;
+        }
+
         [Fact]
         public void BehaveAsAList()
         {
@@ -78,9 +97,25 @@ namespace vectors.Tests
         [MemberData(nameof(AdditionData))]
         public void AddVectorsWithOperator(List<Vector> terms, Vector expectedSum)
         {
-            var sum = new Vector();
+            var sum = new Vector([0]);
             foreach(var term in terms) sum += term;
             Assert.Equal(sum, expectedSum);
         }
+
+        [Theory]
+        [MemberData(nameof(MultiplicationData))]
+        public void MultiplyVectors(List<Vector> factors, Vector expectedProduct)
+        {
+            Assert.Equal(expectedProduct, Vector.Multiplication(factors));
+        }
+
+        // [Theory]
+        // [MemberData(nameof(MultiplicationData))]
+        // public void MultiplyVectorsWithOperator(List<Vector> factors, Vector expectedProduct)
+        // {
+        //     var product = new Vector([1]);
+        //     foreach(var factor in factors) product *= factor;
+        //     Assert.Equal(expectedProduct, product);
+        // }
     }
 }

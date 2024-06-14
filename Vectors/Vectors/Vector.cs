@@ -12,10 +12,9 @@ namespace Vectors
         public Vector(int capacity) : base(capacity) { }
         public new int Count { get => base.Count; set => this.AdjustCount(value); }
 
-        public static Vector operator +(Vector v1, Vector v2) {
-            return Vector.Addition([v1, v2]);
-        }
-        
+        public static Vector operator +(Vector v1, Vector v2) => Vector.Addition([v1, v2]);
+        // public static Vector operator *(Vector v1, Vector v2) => Vector.Multiplication([v1, v2]);
+
         public static Vector Addition(List<Vector> vectors)
         {
             var matchedVectors = Vector.MatchVectors(vectors);
@@ -28,6 +27,20 @@ namespace Vectors
                 sumVector.Add(sum);
             }
             return sumVector;
+        }
+
+        public static Vector Multiplication(List<Vector> vectors)
+        {
+            var matchedVectors = Vector.MatchVectors(vectors);
+            var dimension = matchedVectors[0].Count;
+            var productVector = new Vector(dimension);
+            for (int i = 0; i < dimension; i++)
+            {
+                double product = 1;
+                foreach (var vector in matchedVectors) product *= vector[i];
+                productVector.Add(product);
+            }
+            return productVector;
         }
         public override string ToString()
         {
